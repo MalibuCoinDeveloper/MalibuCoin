@@ -1,5 +1,5 @@
-release/*.exe
-debug/*.exe
+release/*.*
+debug/*.*
 src/malibucoind
 .*.swp
 *.*~*
@@ -13,11 +13,11 @@ src/malibucoind
 *.patch
 *.Debug
 *.Release
+*.old
 
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-malibucoin-qt
 MalibuCoin-Qt.app
 
 # Qt creator

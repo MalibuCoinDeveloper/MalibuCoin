@@ -1007,7 +1007,7 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
     return nSubsidy + nFees;
 }
 
-static const int64_t nTargetTimespan = 2 * 60;  // 2 mins
+static const int64_t nTargetTimespan = 16 * 60;  // 16 mins
 //
 // maximum nBits value could possible be required nTime after
 //
@@ -1018,9 +1018,9 @@ unsigned int ComputeMaxBits(CBigNum bnTargetLimit, unsigned int nBase, int64_t n
     bnResult *= 2;
     while (nTime > 0 && bnResult < bnTargetLimit)
     {
-        // Maximum 400% adjustment per day...
-        bnResult *= 4;
-        nTime -= 2 * 60 * 60;
+        // Maximum 200% adjustment per day...
+        bnResult *= 2;
+        nTime -= 24 * 60 * 60;
     }
     if (bnResult > bnTargetLimit)
         bnResult = bnTargetLimit;
@@ -2508,9 +2508,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1414143662; 
+        block.nTime    = 1414143662;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 179616; 
+        block.nNonce   = 179616;
 		if(fTestNet)
         {
             block.nNonce   = 0;
